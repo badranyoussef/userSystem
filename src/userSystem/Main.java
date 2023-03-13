@@ -1,3 +1,5 @@
+package userSystem;
+
 public class Main {
     public static void main(String[] args) {
         //load fil med brugernavne/passwords
@@ -10,6 +12,7 @@ public class Main {
         String input = textUI.getUserInput();
 
         //login eller opret bruger baseret på tidligere svar.
+        //Skriv velkommen til brugeren hvis det lykkes ellers skrive hvilken fejl der opstod
         switch (input){
             case "1": textUI.loginMenu(); break;
             case "2": textUI.createUserMenu(); break;
@@ -17,10 +20,6 @@ public class Main {
                 System.out.println("Goodbye");
 
         }
-
-
-
-        //Skriv velkommen til brugeren hvis det lykkes ellers skrive hvilken fejl der opstod
 
         //gemme alle brugernavn/password
         //userHandler.saveUsers();

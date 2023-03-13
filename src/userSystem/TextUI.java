@@ -1,3 +1,5 @@
+package userSystem;
+
 import java.util.Scanner;
 
 public class TextUI {
@@ -11,9 +13,8 @@ public class TextUI {
     }
 
     public String getUserInput() {
-        System.out.println("Hej bruger"+
-                "ønsker du 1) at logge ind eller 2) at oprette bruger?"+
-                "Skrive 1 eller 2 og afslut med enter");
+        System.out.println("Hej bruger \n"+
+                "Tast 1 for at logge ind\nTast 2 for at oprette en bruger\nAfslut med enter");
         String input = scanner.nextLine();
         return input;
     }
@@ -33,6 +34,13 @@ public class TextUI {
 
     }
 
+
     public void createUserMenu() {
+        System.out.println("Create a new user\nType your username");
+        String userName = scanner.nextLine();
+        System.out.println("Type your password");
+        String passWord = scanner.nextLine();
+        System.out.println("Welcome onboard "+userName+" :D");
+        userHandler.saveUsers();
     }
 }

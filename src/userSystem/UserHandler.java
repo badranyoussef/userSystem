@@ -1,3 +1,5 @@
+package userSystem;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -17,7 +19,6 @@ public class UserHandler {
         try {
             file = new File("users.txt");
             scanner = new Scanner(file);
-            fileWriter = new FileWriter(file);
         }
         //hvis filen ikke findes så gør følgende
         catch (FileNotFoundException e) {
@@ -27,35 +28,38 @@ public class UserHandler {
         }
 
     }
-
-
     //a method to load users
     public void loadUsers() {
-        // try {
-        //Loop... while... så længe der er en line. kør
-        while (scanner.hasNextLine()) {
-            //gem next line i string tmp
-            String tmp = scanner.nextLine();
-            //split string tmp ved ","
-            String[] elements = tmp.split(",");
-            //for at lave en ny instans af user med navne og password gør følgende
-            User user = new User(elements[0], elements[1]);
-            //gem users i en ARRAYLISTEN som er lavet tidligere
-            users.add(user);
-        }
+        //try {
+            //Scanner scanner = new Scanner("users.txt");
+            //Loop... while... så længe der er en line. kør
+            while (scanner.hasNextLine()) {
+                //gem next line i string tmp
+                String tmp = scanner.nextLine();
+                //split string tmp ved ","
+                String[] elements = tmp.split(",");
+                //for at lave en ny instans af user med navne og password gør følgende
+                User user = new User(elements[0], elements[1]);
+                //gem users i en ARRAYLISTEN som er lavet tidligere
+                users.add(user);
+            }
+        //}
+        //catch (IOException e){
+        //    System.out.println("The system is not working currently");
+       // }
     }
-     /*   catch(IOException e){
-           System.out.println("Systemet virker ikke");
-        } */
 
 
     public void saveUsers() {
         try {
+            fileWriter = new FileWriter("users.txt");
             for (User user : users) {
                 fileWriter.write(user.getName() + "," + user.getPassword());
             }
             fileWriter.close();
-        } catch (IOException e) {
+            System.out.println("Your account is now saved");
+        }
+        catch (IOException e) {
             System.out.println("systemet virker ikke");
         }
     }
@@ -69,5 +73,18 @@ public class UserHandler {
         return false;
     }
 
+    public boolean createUser(String username, String password){
+        if(isValid(password)){
+
+        }
+        return false;
+    }
+
+    public boolean isValid(String password){
+        if (password.length()<8 || !(password.length()<10)){
+            return false;
+        }
+        return true;
+    }
 
 }
